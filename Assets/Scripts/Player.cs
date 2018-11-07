@@ -5,6 +5,9 @@ using UnityEngine;
 public class Player : MonoBehaviour {
     // members or variables
     public float moveSpeed = 7.0f;
+	public GameObject bulletspawner;
+	public GameObject bullet;
+	
 
     // methods or functions
 	
@@ -14,6 +17,28 @@ public class Player : MonoBehaviour {
         if(Input.GetKey(KeyCode.W))
         {
             transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
+			//transform.getchild(0) LookAt();
+			
+        }// Player movement
+        if(Input.GetKey(KeyCode.A))
+        {
+            transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
+        }// Player movement
+        if(Input.GetKey(KeyCode.S))
+        {
+            transform.Translate(Vector3.back * moveSpeed * Time.deltaTime);
+        }// Player movement
+        if(Input.GetKey(KeyCode.D))
+        {
+            transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
         }
+		if(Input.GetKeyDown(KeyCode.Space))
+		{
+			Shoot();
+		}
+	}
+	void Shoot()
+	{
+		Instantiate(bullet.transform, bulletspawner.transform.position, bulletspawner.transform.rotation);
 	}
 }
