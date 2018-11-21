@@ -24,13 +24,13 @@ public class Bullet : MonoBehaviour {
 		    Destroy(this.gameObject);
         }
     }
-        void OnTriggerEnter(Collider other)
-        {
+    void OnTriggerEnter(Collider other)
+    {
         if(other.tag == "Enemy")
-{
+        {
         triggerEnemy = other.gameObject;
         triggerEnemy.GetComponent<Enemy>().health -= damage;
         Destroy(this.gameObject);
-}
-}
+        }
+    }
 }
