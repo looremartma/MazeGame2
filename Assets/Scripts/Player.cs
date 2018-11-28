@@ -11,9 +11,14 @@ public class Player : MonoBehaviour {
 
     public GameObject bulletspawner;
     public GameObject bullet;
-    public Transform initial;
+
+    private Vector3 position;
 
     // methods or functions
+    private void Start()
+    {
+       position = gameObject.transform.position;
+    }
 
     // Update is called once per frame
     void Update() {
@@ -57,7 +62,8 @@ public class Player : MonoBehaviour {
         if (other.tag == "Enemy")
         {
             health -= 1.0f;
-            transform.Translate(initial.position, Space.World);
+            transform.position = position;
+            //transform.Translate(initial.position, Space.World);
             if (health < 0)
             {
                 print("Player died!");
